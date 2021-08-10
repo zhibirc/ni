@@ -7,6 +7,8 @@ export default class LexicalError extends Error {
     constructor ( message, position ) {
         super();
 
+        #delimiterPattern = /\s+/;
+
         this.message = message;
         this.position = position;
     }
