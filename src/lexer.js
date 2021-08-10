@@ -1,9 +1,18 @@
+/**
+ * Lexical analyzer.
+ *
+ * Read input text and analyze each lexeme in according to language alphabet.
+ *
+ * @class
+ */
 export class Lexer {
-    constructor ( input ) {
-        this.input = input;
+    constructor ( text ) {
+        this.text = text;
+        this.position = 0;
+        this.tokenList = [];
     }
 
     analyze () {
-        return [];
+        return this.tokenList;
     }
 }
