@@ -1,3 +1,6 @@
+import LexicalError from './errors/lexical';
+
+
 /**
  * Lexical analyzer.
  *
