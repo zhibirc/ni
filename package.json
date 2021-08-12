@@ -1,15 +1,12 @@
 {
     "name": "ni",
     "version": "1.0.0",
-    "description": "",
-    "directories": {
-        "test": "tests"
-    },
+    "description": "Ni Programming Language",
     "scripts": {
         "test": "echo \"Error: no test specified\" && exit 1"
     },
     "bin": {
-        "ni": "./bin/ni"
+        "ni": "src/compiler/ni"
     },
     "keywords": [],
     "author": "",
