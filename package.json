@@ -6,9 +6,15 @@
         "test": "echo \"Error: no test specified\" && exit 1"
     },
     "bin": {
-        "ni": "src/compiler/ni"
+        "ni": "./bin/ni"
     },
-    "keywords": [],
+    "keywords": [
+        "ni",
+        "programming",
+        "language",
+        "javascript",
+        "compiler"
+    ],
     "author": "",
     "license": "ISC",
     "dependencies": {

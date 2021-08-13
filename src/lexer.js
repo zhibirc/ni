@@ -1,4 +1,5 @@
 import LexicalError from './errors/lexical';
+import { alphabet } from './terminals/alphabet';
 
 
 /**
@@ -15,7 +16,13 @@ export class Lexer {
         this.tokenList = [];
     }
 
-    analyze () {
+    tokenize () {
+        const textLength = this.text.length;
+
+        while ( this.position < textLength ) {
+
+        }
+
         return this.tokenList;
     }
 }
