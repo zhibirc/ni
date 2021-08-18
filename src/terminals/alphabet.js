@@ -5,19 +5,26 @@
 
 
 export const alphabet = {
-    VARIABLE: /^(?:[A-Z]+(?:_[A-Z]+)*|\$?[a-z][a-zA-Z]+)$/,
+    VARIABLE: /(?:[A-Z]+(?:_[A-Z]+)*|\$?[a-z][a-zA-Z]+)/,
 
     EOF: ';',
 
     operators: {
-        IDENTITY:       '==',
-        ADDITION:       '+',
-        SUBTRACTION:    '-',
-        MULTIPLICATION: '*',
-        DIVISION:       '/',
-        EXPONENTIATION: '^',
-        LEFT_BRACE:     '(',
-        RIGHT_BRACE:    ')'
+        single: {
+            ASSIGNMENT:     /=/,
+            ADDITION:       /\+/,
+            DIVISION:       /\//,
+            EXPONENTIATION: /\^/,
+            LEFT_BRACE:     /\(/,
+            RIGHT_BRACE:    /\)/,
+            MULTIPLICATION: /\*/,
+            SUBTRACTION:    /-/,
+        },
+        double: {
+            IDENTITY:  /==/,
+            INCREMENT: /\+\+/,
+            DECREMENT: /--/
+        }
     },
 
     keywords: {
@@ -27,5 +34,12 @@ export const alphabet = {
         EXCEPTION: 'oops',
         LOG:       'log',
         NOP:       'nop'
+    },
+
+    literals: {
+        STRING:  /'[^']*'|"[^"]*"/,
+        NUMBER:  /-?\d+(\.\d+)?/,
+        BOOLEAN: /true|false/,
+        LIST:    /\[(?:[^\]]*,)?[^\]]*\]/
     }
 };
