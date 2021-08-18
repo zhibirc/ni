@@ -3,6 +3,8 @@
  * Define full set of terminals for all language aspects.
  */
 
+'use strict';
+
 
 const alphabet = {
     terminators: {
@@ -49,8 +51,8 @@ const alphabet = {
 const alphabetPatternList = (() => {
     const list = [];
 
-    (function traverse ( alphabet, group ) {
-        for ( const [key, value] of Object.entries(alphabet) ) {
+    (function traverse ( terms, group ) {
+        for ( const [key, value] of Object.entries(terms) ) {
             value.constructor.name === 'RegExp' && list.push({group, type: key, pattern: value});
             value.constructor.name !== 'RegExp' && traverse(value, key);
         }

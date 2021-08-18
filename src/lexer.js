@@ -2,8 +2,11 @@
  * Lexical analyzer.
  */
 
+'use strict';
+
 
 const LexicalError = require('./errors/lexical');
+
 const alphabetPatternList = require('./terminals/alphabet').alphabetPatternList;
 
 
@@ -39,7 +42,8 @@ class Lexer {
                 }
 
                 this.tokenList.push({
-                    // use this information later on the token recognition stage to produce meaningful and helpful error message if token is of unknown type
+                    // use this information later on the token recognition stage
+                    // to produce meaningful and helpful error message if token is of unknown type
                     position: this.position,
                     group: token.group,
                     type: token.type,

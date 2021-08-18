@@ -1,17 +1,17 @@
 #!/usr/bin/env node
 
-// built-ins
-const fs = require('fs');
+'use strict';
 
 // external
 /** @see {@link https://www.npmjs.com/package/commander} */
-const { Command } = require('commander');
+const {Command} = require('commander');
 
 // package.json as a source of meta information
 const packageConfig = require('../../package.json');
 
 
 const cli = new Command();
+
 let fileEntityList;
 
 cli
@@ -24,9 +24,9 @@ cli
     .action(files => (fileEntityList = files))
     .parse(process.argv);
 
-const options = cli.opts();
+//const options = cli.opts();
 
-let textContent;
+//let textContent;
 
 if ( fileEntityList.length === 0 ) {
     cli.help();
@@ -34,10 +34,8 @@ if ( fileEntityList.length === 0 ) {
 
 ['SIGINT', 'SIGTERM'].forEach(signal => process.on(signal, process.exit));
 
-process.on('uncaughtException', error => {
+process.on('uncaughtException', (/*error*/) => {
     process.exit(1);
 });
 
 console.log('Please, wait...');
-
-

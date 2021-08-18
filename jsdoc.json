@@ -1,0 +1,32 @@
+{
+    "tags": {
+        "allowUnknownTags": false
+    },
+    "source": {
+        "include": [
+            "src/",
+            "./readme.md"
+        ],
+        "includePattern": "\\.js$",
+        "excludePattern": "(node_modules/|docs/)"
+    },
+    "plugins": [
+        "plugins/markdown"
+    ],
+    "markdown": {
+        "parser": "gfm",
+        "hardwrap": true,
+        "idInHeadings": true
+    },
+    "opts": {
+        "encoding": "utf8",
+        "template": "./node_modules/docdash/",
+        "destination": "docs/",
+        "recurse": true,
+        "verbose": true
+    },
+    "templates": {
+        "cleverLinks": false,
+        "monospaceLinks": false
+    }
+}

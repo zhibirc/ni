@@ -1,3 +1,5 @@
+'use strict';
+
 /**
  * Special error class for lexical errors in input data.
  *

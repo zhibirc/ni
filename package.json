@@ -1,12 +1,32 @@
 {
     "name": "ni",
-    "version": "1.0.0",
     "description": "Ni Programming Language",
-    "scripts": {
-        "test": "echo \"Error: no test specified\" && exit 1"
+    "version": "1.0.0",
+    "private": true,
+    "author": {
+        "name": "Yaroslav Surilov",
+        "email": "zhibirc.echo@gmail.com",
+        "url": "http://test.directory/"
     },
+    "license": "MIT",
+    "scripts": {
+        "lint": "eslint \"src/**/*.js\"",
+        "generate-docs": "jsdoc -c jsdoc.json"
+    },
+    "pre-commit": [
+        "lint"
+    ],
     "bin": {
         "ni": "./bin/ni"
+    },
+    "homepage": "https://zhibirc.github.io/ni/",
+    "repository": {
+        "type": "git",
+        "url": "git@github.com:zhibirc/ni.git"
+    },
+    "bugs": {
+        "url": "https://github.com/zhibirc/ni/issues",
+        "email": "zhibirc.echo@gmail.com"
     },
     "keywords": [
         "ni",
@@ -15,9 +35,15 @@
         "javascript",
         "compiler"
     ],
-    "author": "",
-    "license": "MIT",
     "dependencies": {
-        "commander": "^8.1.0"
+        "commander": "~8.1.0"
+    },
+    "devDependencies": {
+        "chai": "~4.3.4",
+        "cjs-eslint": "^2.1.0",
+        "docdash": "~1.2.0",
+        "jsdoc": "~3.6.7",
+        "mocha": "~8.4.0",
+        "pre-commit": "~1.2.2"
     }
 }
