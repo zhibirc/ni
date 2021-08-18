@@ -3,13 +3,13 @@
  *
  * @class
  */
-export default class LexicalError extends Error {
+class LexicalError extends Error {
     constructor ( message, position ) {
         super();
 
-        #delimiterPattern = /\s+/;
-
-        this.message = message;
-        this.position = position;
+        this.message = `${message}${position}`;
     }
 }
+
+
+module.exports = LexicalError;

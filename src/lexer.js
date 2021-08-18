@@ -1,5 +1,10 @@
-import LexicalError from './errors/lexical';
-import { alphabet } from './terminals/alphabet';
+/**
+ * Lexical analyzer.
+ */
+
+
+const LexicalError = require('./errors/lexical');
+const alphabetPatternList = require('./terminals/alphabet').alphabetPatternList;
 
 
 /**
@@ -9,37 +14,47 @@ import { alphabet } from './terminals/alphabet';
  *
  * @class
  */
-export class Lexer {
+class Lexer {
     constructor ( text ) {
-        this.text = text;
+        this.text = text.trim();
         this.position = 0;
         this.tokenList = [];
     }
 
     tokenize () {
         const textLength = this.text.length;
-        let accumulatedValue = '';
-        let currentCharacter;
 
         while ( this.position < textLength ) {
-            currentCharacter = this.text[this.position];
+            if ( /\S/.test(this.text[this.position]) ) {
+                let match;
 
-            if ( /\s/.test(currentCharacter) ) {
-                if ( accumulatedValue ) {
-                    this.tokenList.push({
-                        // use this information later on the token recognition stage to produce meaningful and helpful error message if token is of unknown type
-                        position: this.position - accumulatedValue.length,
-                        value: accumulatedValue
-                    });
-                    accumulatedValue = null;
+                const token = alphabetPatternList.find(item => {
+                    match = this.text.slice(this.position).match(item.pattern);
+
+                    return Boolean(match);
+                });
+
+                if ( !token ) {
+                    throw new LexicalError(this.position);
                 }
-            } else {
-                accumulatedValue += currentCharacter;
-            }
 
-            ++this.position;
+                this.tokenList.push({
+                    // use this information later on the token recognition stage to produce meaningful and helpful error message if token is of unknown type
+                    position: this.position,
+                    group: token.group,
+                    type: token.type,
+                    value: match[0]
+                });
+
+                this.position += match[0].length;
+            } else {
+                ++this.position;
+            }
         }
 
         return this.tokenList;
     }
 }
+
+
+module.exports = Lexer;

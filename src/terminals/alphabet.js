@@ -5,43 +5,44 @@
 
 
 const alphabet = {
-    names: {
-        VARIABLE: /(?:[A-Z]+(?:_[A-Z]+)*|\$?[a-z][a-zA-Z]+)/
-    },
-
     terminators: {
-        EOF: /;/
+        EOF: /^;/
     },
 
     operators: {
-        IDENTITY:       /==/,
-        INCREMENT:      /\+\+/,
-        DECREMENT:      /--/,
+        IDENTITY:       /^==/,
+        INCREMENT:      /^\+\+/,
+        DECREMENT:      /^--/,
 
-        ASSIGNMENT:     /=/,
-        ADDITION:       /\+/,
-        DIVISION:       /\//,
-        EXPONENTIATION: /\^/,
-        LEFT_BRACE:     /\(/,
-        RIGHT_BRACE:    /\)/,
-        MULTIPLICATION: /\*/,
-        SUBTRACTION:    /-/
+        ASSIGNMENT:     /^=/,
+        ADDITION:       /^\+/,
+        DIVISION:       /^\//,
+        EXPONENTIATION: /^\^/,
+        LEFT_BRACE:     /^\(/,
+        RIGHT_BRACE:    /^\)/,
+        MULTIPLICATION: /^\*/,
+        SUBTRACTION:    /^-/
     },
 
     keywords: {
-        LOOP:      /till/,
-        IF:        /if/,
-        ELSE:      /else/,
-        EXCEPTION: /oops/,
-        LOG:       /log/,
-        NOP:       /nop/
+        LOOP:      /^till/,
+        IF:        /^if/,
+        ELIF:      /^elif/,
+        ELSE:      /^else/,
+        EXCEPTION: /^oops/,
+        LOG:       /^log/,
+        NOP:       /^nop/
     },
 
     literals: {
-        STRING:  /'[^']*'|"[^"]*"/,
-        NUMBER:  /-?\d+(\.\d+)?/,
-        BOOLEAN: /true|false/,
+        STRING:  /^(?:'[^']*'|"[^"]*")/,
+        NUMBER:  /^-?\d+(?:\.\d+)?/,
+        BOOLEAN: /^(?:true|false)/,
         LIST:    /\[(?:[^\]]*,)?[^\]]*\]/
+    },
+
+    names: {
+        VARIABLE: /^(?:[A-Z]+(?:_[A-Z]+)*|\$?[a-z][a-zA-Z]+)/
     }
 };
 
