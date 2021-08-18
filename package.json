@@ -16,7 +16,7 @@
         "compiler"
     ],
     "author": "",
-    "license": "ISC",
+    "license": "MIT",
     "dependencies": {
         "commander": "^8.1.0"
     }

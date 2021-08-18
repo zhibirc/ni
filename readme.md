@@ -17,4 +17,4 @@
 
 ## License
 
-**Ni** Programming Language is licensed under the terms of the... (check later).
+**Ni** Programming Language is licensed under the terms of the [MIT license](./license.md).
