@@ -4,36 +4,37 @@
  */
 
 
-export const alphabet = {
-    VARIABLE: /(?:[A-Z]+(?:_[A-Z]+)*|\$?[a-z][a-zA-Z]+)/,
+const alphabet = {
+    names: {
+        VARIABLE: /(?:[A-Z]+(?:_[A-Z]+)*|\$?[a-z][a-zA-Z]+)/
+    },
 
-    EOF: ';',
+    terminators: {
+        EOF: /;/
+    },
 
     operators: {
-        single: {
-            ASSIGNMENT:     /=/,
-            ADDITION:       /\+/,
-            DIVISION:       /\//,
-            EXPONENTIATION: /\^/,
-            LEFT_BRACE:     /\(/,
-            RIGHT_BRACE:    /\)/,
-            MULTIPLICATION: /\*/,
-            SUBTRACTION:    /-/,
-        },
-        double: {
-            IDENTITY:  /==/,
-            INCREMENT: /\+\+/,
-            DECREMENT: /--/
-        }
+        IDENTITY:       /==/,
+        INCREMENT:      /\+\+/,
+        DECREMENT:      /--/,
+
+        ASSIGNMENT:     /=/,
+        ADDITION:       /\+/,
+        DIVISION:       /\//,
+        EXPONENTIATION: /\^/,
+        LEFT_BRACE:     /\(/,
+        RIGHT_BRACE:    /\)/,
+        MULTIPLICATION: /\*/,
+        SUBTRACTION:    /-/
     },
 
     keywords: {
-        LOOP:      'till',
-        IF:        'if',
-        ELSE:      'else',
-        EXCEPTION: 'oops',
-        LOG:       'log',
-        NOP:       'nop'
+        LOOP:      /till/,
+        IF:        /if/,
+        ELSE:      /else/,
+        EXCEPTION: /oops/,
+        LOG:       /log/,
+        NOP:       /nop/
     },
 
     literals: {
@@ -42,4 +43,23 @@ export const alphabet = {
         BOOLEAN: /true|false/,
         LIST:    /\[(?:[^\]]*,)?[^\]]*\]/
     }
+};
+
+const alphabetPatternList = (() => {
+    const list = [];
+
+    (function traverse ( alphabet, group ) {
+        for ( const [key, value] of Object.entries(alphabet) ) {
+            value.constructor.name === 'RegExp' && list.push({group, type: key, pattern: value});
+            value.constructor.name !== 'RegExp' && traverse(value, key);
+        }
+    })(alphabet);
+
+    return list;
+})();
+
+
+module.exports = {
+    alphabet,
+    alphabetPatternList
 };
