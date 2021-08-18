@@ -6,8 +6,8 @@
 
 
 const LexicalError = require('./errors/lexical');
-
-const alphabetPatternList = require('./terminals/alphabet').alphabetPatternList;
+const Token = require('./token');
+const {alphabetPatternList} = require('./terminals/alphabet');
 
 
 /**
@@ -41,14 +41,12 @@ class Lexer {
                     throw new LexicalError(this.position);
                 }
 
-                this.tokenList.push({
-                    // use this information later on the token recognition stage
-                    // to produce meaningful and helpful error message if token is of unknown type
-                    position: this.position,
-                    group: token.group,
-                    type: token.type,
-                    value: match[0]
-                });
+                this.tokenList.push(new Token(
+                    this.position,
+                    token.group,
+                    token.type,
+                    match[0]
+                ));
 
                 this.position += match[0].length;
             } else {

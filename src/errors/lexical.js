@@ -9,7 +9,7 @@ class LexicalError extends Error {
     constructor ( message, position ) {
         super();
 
-        this.message = `${message}${position}`;
+        this.message = `${message || 'Lexical error: unknown lexeme on position '}${position}`;
     }
 }
 
