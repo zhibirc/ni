@@ -1,29 +1,41 @@
 /**
- * Lexical analyzer.
+ * Lexical analyzer class.
  */
 
-'use strict';
 
+'use strict';
 
 const LexicalError = require('./errors/lexical');
 const Token = require('./token');
 const {alphabetPatternList} = require('./terminals/alphabet');
 
-
 /**
  * Lexical analyzer.
  *
- * Read input text and analyze each lexeme in according to language alphabet.
- *
- * @class
+ * Analyze each lexeme from the given text in according to language alphabet/terminals/grammar.
  */
 class Lexer {
+    /**
+     * Lexer constructor.
+     *
+     * @constructor
+     * @param {string} text - plain text as code source
+     *
+     * @return {Lexer} instance of Lexer analyzer
+     */
     constructor ( text ) {
         this.text = text.trim();
         this.position = 0;
         this.tokenList = [];
     }
 
+    /**
+     * Tokenize source code.
+     *
+     * Analyze source text/code in according to language grammar and produce a structure of tokens.
+     *
+     * @return {Token[]} array of Token instances
+     */
     tokenize () {
         const textLength = this.text.length;
 
