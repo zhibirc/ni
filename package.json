@@ -1,6 +1,6 @@
 {
     "name": "ni",
-    "description": "Ni Programming Language",
+    "description": "Ni 🐘 Programming Language",
     "version": "1.0.0",
     "private": true,
     "author": {
@@ -17,7 +17,7 @@
         "lint"
     ],
     "bin": {
-        "ni": "./bin/ni"
+        "ni": "./bin/ni.js"
     },
     "homepage": "https://zhibirc.github.io/ni/",
     "repository": {
@@ -36,7 +36,9 @@
         "compiler"
     ],
     "dependencies": {
-        "commander": "~8.1.0"
+        "colors": "^1.4.0",
+        "commander": "~8.1.0",
+        "inquirer": "^8.1.2"
     },
     "devDependencies": {
         "chai": "~4.3.4",
