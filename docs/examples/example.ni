@@ -1,9 +1,5 @@
 ID = 'user';
 
-users = [];
+users = 5;
 
-till ( users ) {
-    if ( __iter == ID ) {
-        log(__iter);
-    }
-}
+till ( users ) log('Infinity loop');

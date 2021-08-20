@@ -1,4 +1,4 @@
-const Lexer = require('../../src/lexer');
+const Lexer = require('../../src/compiler/lexer');
 
 const codeCorrect = '234 - 567 = 8; log("success");';
 const codeIncorrect = '&&& ^^^ $$$';

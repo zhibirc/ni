@@ -1,13 +1,15 @@
 /**
  * Lexical analyzer class.
+ *
+ * Take raw text as an input and produce token stream as an output.
  */
 
 
 'use strict';
 
-const LexicalError = require('./errors/lexical');
+const LexicalError = require('../errors/lexical');
 const Token = require('./token');
-const {alphabetPatternList} = require('./terminals/alphabet');
+const {alphabetPatternList} = require('../terminals/alphabet');
 
 /**
  * Lexical analyzer.
@@ -50,6 +52,7 @@ class Lexer {
                 });
 
                 if ( !token ) {
+                    // TODO: specify code fragment or invalid token for better UX
                     throw new LexicalError(this.position);
                 }
 

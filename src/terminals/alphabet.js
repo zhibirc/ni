@@ -15,15 +15,15 @@ const alphabet = {
         IDENTITY:       /^==/,
         INCREMENT:      /^\+\+/,
         DECREMENT:      /^--/,
-
-        ASSIGNMENT:     /^=/,
-        ADDITION:       /^\+/,
+        ASSIGNMENT:     /^=(?!=)/,
+        ADDITION:       /^\+(?!\+)/,
         DIVISION:       /^\//,
         EXPONENTIATION: /^\^/,
         LEFT_BRACE:     /^\(/,
         RIGHT_BRACE:    /^\)/,
         MULTIPLICATION: /^\*/,
-        SUBTRACTION:    /^-/
+        SUBTRACTION:    /^-(?!-)/,
+        COMMA:          /^,/
     },
 
     keywords: {
@@ -43,7 +43,13 @@ const alphabet = {
         LIST:    /\[(?:[^\]]*,)?[^\]]*\]/
     },
 
-    names: {
+    comments: {
+        SINGLE_LINE: /^\/\/.*/,
+        MULTI_LINE:  /^\/\*[\S\s]*(?!\*\/)/,
+        JSDOC:       /^\/\*\*[\S\s]*(?!\*\/)/
+    },
+
+    identifiers: {
         VARIABLE: /^(?:[A-Z]+(?:_[A-Z]+)*|\$?[a-z][a-zA-Z]+)/
     }
 };

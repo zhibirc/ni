@@ -40,12 +40,24 @@ module.exports = {
         return _path.resolve(value.trim());
     },
 
-    isDirectory ( directory ) {
+    isFile ( value ) {
         try {
-            return directory && native.statSync(this.normalizePath(directory)).isDirectory();
+            return value && native.statSync(this.normalizePath(value)).isFile();
         } catch {
             return false;
         }
+    },
+
+    isDirectory ( value ) {
+        try {
+            return value && native.statSync(this.normalizePath(value)).isDirectory();
+        } catch {
+            return false;
+        }
+    },
+
+    isNiFile ( value ) {
+        return this.isFile(value) && _path.extname(this.normalizePath(value)) === '.ni';
     },
 
     make ( path, type ) {
@@ -62,12 +74,18 @@ module.exports = {
 
     save ( where, what, flag = accessModes.APPEND ) {
         try {
-            native.writeFileSync(where, what, {flag});
+            native.writeFileSync(where, JSON.stringify(what, null, 2), {flag});
 
             return EXIT_CODE_SUCCESS;
         } catch {
             return EXIT_CODE_FAILURE;
         }
+    },
+
+    saveJsNextToNi ( where, ...rest ) {
+        const name = _path.basename(where, '.ni');
+
+        this.save(_path.join(_path.dirname(where), `${name}.js`), ...rest);
     },
 
     delete ( path ) {

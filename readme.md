@@ -14,7 +14,11 @@
 
 ## Compiler
 
+Generally, Ni compiler workflow can be described as:
+
+`SourceCode ~~ Lexer ~~> TokenStream ~~ Parser ~~> AST`
+
 
 ## License
 
-**Ni** Programming Language is licensed under the terms of the [MIT license](./license.md).
+**Ni** Programming Language is licensed under the terms of the [MIT license](./LICENSE).
